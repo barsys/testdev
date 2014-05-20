@@ -1,7 +1,34 @@
 <div>
-投稿用ページ
+投稿ページ
 <hr>
-<form method="POST" action 
+
+<?php
+    $form = $this->form;
+    $form->setAttribute('action', $this->url(
+            'contribution',
+        	array(
+           	    'controller' => 'index',
+                'action' => 'comfirm',
+            )
+    ));
+
+    echo $this->form()->openTag($form);
+    echo $this->formRow($form->get('shop_name'));
+    echo "<br>";
+    echo $this->formRow($form->get('prefecture'));
+    echo "<br>";
+    echo $this->formRow($form->get('town'));
+    echo "<br>";
+    echo $this->formRow($form->get('house_num'));
+    echo "<br>";
+    echo $this->formRow($form->get('building'));
+    echo "<br>";
+    echo $this->formRow($form->get('comment'));
+    echo "<br><br>";
+    echo $this->formSubmit($form->get('submit'));
+    echo $this->form()->closeTag($form);
+?>
+<!-- 
 店名：<input type="text" property="shop_name"></input><br><br>
 都道府県：
 <select>
@@ -12,5 +39,6 @@
 番地：<input type="text" property="house_num"></input><br><br>
 ビル名等：<input type="text" property="building"></input><br><br>
 コメント：<textarea property="comment"></textarea>
+ -->
 </div>
 

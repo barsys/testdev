@@ -15,12 +15,12 @@ return array(
             // module. Simply drop new controllers in, and you can access them
             // using the path /application/:controller/:action
 			'contribution' => array(
-				'type' => 'Literal',
+				'type' => 'Segment',
 				'options' => array(
-					'route' => '/contribution',
+					'route' => '/contribution[/:controller[/:action]]',
 					'defaults' => array(
                         '__NAMESPACE__' => 'Contribution\Controller',
-                        'controller'    => 'Index',
+                        'controller'    => 'index',
                         'action'        => 'index',
 					),
 				),
@@ -74,7 +74,7 @@ return array(
         'exception_template'       => 'error/index',
         'template_map' => array(
             'layout/layout'           => __DIR__ . '/../view/layout/layout.phtml',
-            'contribution/index/index' => __DIR__ . '/../view/contribution/index/index.phtml',
+//            'contribution/index/index' => __DIR__ . '/../view/contribution/index/index.phtml',
             'error/404'               => __DIR__ . '/../view/error/404.phtml',
             'error/index'             => __DIR__ . '/../view/error/index.phtml',
         ),

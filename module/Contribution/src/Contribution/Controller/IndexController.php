@@ -11,11 +11,34 @@ namespace Contribution\Controller;
 
 use Zend\Mvc\Controller\AbstractActionController;
 use Zend\View\Model\ViewModel;
+use Contribution\Form\ContributionForm;
 
 class IndexController extends AbstractActionController
 {
     public function indexAction()
     {
-        return new ViewModel();
+    	$form = new ContributionForm();
+    	
+    	$values = array(
+    			'form' => $form,
+    	);
+    	$view = new ViewModel($values);
+    	
+        return $view;
+    }
+    
+    public function comfirmAction()
+    {
+
+    	$form = new ContributionForm();
+    	
+    	$request = $this->getRequest();
+    	$form->setData($request->getPost());
+    	
+    	$values = array(
+    			'form' => $form,	
+    	);
+    	
+    	return new ViewModel($values);
     }
 }
